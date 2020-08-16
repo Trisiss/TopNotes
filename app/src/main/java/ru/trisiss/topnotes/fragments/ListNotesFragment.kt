@@ -37,7 +37,6 @@ class ListNotesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(ListNotesViewModel::class.java)
         val listNotes = listOf<Note>(Note(id = 1, title = "First note", text = "First note", dateModification = "2020-07-27"),
             Note(id = 1, title = "First note", text = "First note", dateModification = "2020-07-27"),
             Note(id = 1, title = "First note", text = "First note", dateModification = "2020-07-27"),

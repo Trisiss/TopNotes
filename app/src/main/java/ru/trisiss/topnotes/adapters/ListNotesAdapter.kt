@@ -16,12 +16,8 @@ class ListNotesAdapter() :
     var notes: List<Note> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNotesViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-//        val binding =
-//            DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
 
         return ListNotesViewHolder(ViewNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-//        return ListNotesViewHolder(binding)
     }
 
     override fun getItemCount(): Int {

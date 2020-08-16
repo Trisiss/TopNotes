@@ -13,7 +13,6 @@ import ru.trisiss.topnotes.adapters.ListNotesAdapter
 class ListNotesViewModel : ViewModel() {
     private val _notes = MutableLiveData<List<Note>>()
     val notes: LiveData<List<Note>> = _notes
-    @SuppressLint("ResourceType")
     val adapter: ListNotesAdapter = ListNotesAdapter()
 
     fun setNotesInAdapter(notes: List<Note>) {
@@ -26,7 +25,7 @@ class ListNotesViewModel : ViewModel() {
 //        val note = getNoteAt(index)
 //        selected.value = note
 //    }
-
+//
 //    fun getNoteAt(index: Int): Note? {
 //        if (notes.value?.size ?: 0 > index)
 //            return notes.value?.get(index)
