@@ -26,16 +26,17 @@ class ListNotesAdapter() :
 
     override fun onBindViewHolder(holder: ListNotesViewHolder, position: Int) {
         val viewModel: ListNotesViewModel = ListNotesViewModel()
-        holder.bind(viewModel = viewModel, position = position)
+        val note = notes[position]
+        holder.bind(viewModel = viewModel, note = note)
     }
 
     class ListNotesViewHolder(val binding: ViewDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(viewModel: ListNotesViewModel, position: Int) {
-//            binding.setVariable(BR.viewmodel, viewModel)
-//            binding.setVariable(BR.position, position)
-//            binding.executePendingBindings()
+        fun bind(viewModel: ListNotesViewModel, note: Note) {
+            binding.setVariable(BR.viewmodel, viewModel)
+            binding.setVariable(BR.note, note)
+            binding.executePendingBindings()
         }
     }
 
