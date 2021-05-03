@@ -6,7 +6,7 @@
     app:startDestination="@id/listNotesFragment">
     <fragment
         android:id="@+id/listNotesFragment"
-        android:name="ru.trisiss.topnotes.fragments.ListNotesFragment"
+        android:name="ru.trisiss.topnotes.ui.listNotes.ListNotesFragment"
         android:label="fragment_notes_list"
         tools:layout="@layout/fragment_notes_list" />
 </navigation>

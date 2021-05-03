@@ -1,13 +1,18 @@
 buildscript {
     ext {
-        kotlin_version = '1.3.72'
-        viewModel_version = "2.2.0"
-        nav_version = "2.3.0"
-        room_version = "2.2.5"
-        nav_version = "2.3.0"
-        ktlint_version = "9.3.0"
-        coroutinesVersion = "1.3.0"
-        workVersion = "2.1.0"
+        kotlinVersion = '1.4.0'
+        kotlinLibVersion = "1.4.10"
+        viewModelVersion = "2.2.0"
+        navVersion = "2.3.0"
+        roomVersion = "2.2.5"
+        ktlintVersion = "9.3.0"
+        coroutinesVersion = "1.3.7"
+        workVersion = "2.4.0"
+        rxKotlinVersion = "3.0.0"
+        rxAndroidVersion = "3.0.0"
+        junitVersion = "1.1.2"
+        espressoVersion = "3.3.0"
+
     }
 
     repositories {
@@ -19,15 +24,15 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinLibVersion"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinLibVersion"
 
         // Navigation
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
 
         // ktlint
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlintVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
