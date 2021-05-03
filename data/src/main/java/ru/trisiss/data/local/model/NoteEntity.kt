@@ -1,4 +1,4 @@
-package ru.trisiss.data
+package ru.trisiss.data.local.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

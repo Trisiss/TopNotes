@@ -1,12 +1,12 @@
-package ru.trisiss.data
+package ru.trisiss.data.local.dao
 
 import androidx.room.*
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
-import ru.trisiss.domain.repository.NoteDAO
+import ru.trisiss.data.local.model.NoteEntity
 
 @Dao
-interface NoteDAOImpl: NoteDAO {
+interface NoteDAO {
 
     @Query("SELECT * FROM notes ORDER BY timestamp DESC")
     fun getNotes(): Single<List<NoteEntity>>
