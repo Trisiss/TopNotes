@@ -2,7 +2,6 @@ package ru.trisiss.domain.repository
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Single
 import ru.trisiss.domain.model.Note
 
 /**
@@ -14,7 +13,7 @@ interface NoteRepository {
 
     fun delete(note: Note): Completable
 
-    fun getNotes(): Single<List<Note>>
+    suspend fun getNotes(): List<Note>?
 
     fun getNote(noteId: Long): Maybe<Note>
 }

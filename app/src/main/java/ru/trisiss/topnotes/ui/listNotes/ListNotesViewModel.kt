@@ -24,6 +24,7 @@ class ListNotesViewModel : ViewModel() {
 
 
     private fun getData(): List<Note> {
+
         return listOf(
             Note(
                 id = 1,

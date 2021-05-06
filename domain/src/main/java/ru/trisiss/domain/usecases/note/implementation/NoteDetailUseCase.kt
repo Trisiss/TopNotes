@@ -1,4 +1,4 @@
-package ru.trisiss.domain.usecases
+package ru.trisiss.domain.usecases.note.implementation
 
 import io.reactivex.rxjava3.core.Maybe
 import ru.trisiss.domain.model.Note
