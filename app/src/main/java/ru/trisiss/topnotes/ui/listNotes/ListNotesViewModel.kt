@@ -3,9 +3,14 @@ package ru.trisiss.topnotes.ui.listNotes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
+import ru.trisiss.domain.usecases.note.LoadNotes
 
-class ListNotesViewModel : ViewModel() {
+class ListNotesViewModel(
+    private val loadNotesUseCase: LoadNotes
+) : ViewModel() {
     private val _clickNote = MutableLiveData<Note>()
     val clickNote: LiveData<Note>
         get() = _clickNote
@@ -14,7 +19,9 @@ class ListNotesViewModel : ViewModel() {
         get() = _listNotes
 
     init {
-        _listNotes.value = getData()
+        GlobalScope.launch {
+            _listNotes.postValue(getData())
+        }
     }
 
     fun clickNote(note: Note) {
@@ -22,40 +29,41 @@ class ListNotesViewModel : ViewModel() {
     }
 
 
+    private suspend fun getData(): List<Note>? {
 
-    private fun getData(): List<Note> {
-
-        return listOf(
-            Note(
-                id = 1,
-                title = "First note",
-                text = "First note",
-                dateModification = System.currentTimeMillis()
-            ),
-            Note(
-                id = 2,
-                title = "Second note",
-                text = "Second note",
-                dateModification = System.currentTimeMillis()
-            ),
-            Note(
-                id = 3,
-                title = "Three note",
-                text = "Three note",
-                dateModification = System.currentTimeMillis()
-            ),
-            Note(
-                id = 4,
-                title = "Four note",
-                text = "Four note",
-                dateModification = System.currentTimeMillis()
-            ),
-            Note(
-                id = 5,
-                title = "Five note",
-                text = "Five note",
-                dateModification = System.currentTimeMillis()
-            )
-        )
+        return loadNotesUseCase.getNotes()
+        //------------------------
+//        return listOf(
+//            Note(
+//                id = 1,
+//                title = "First note",
+//                text = "First note",
+//                dateModification = System.currentTimeMillis()
+//            ),
+//            Note(
+//                id = 2,
+//                title = "Second note",
+//                text = "Second note",
+//                dateModification = System.currentTimeMillis()
+//            ),
+//            Note(
+//                id = 3,
+//                title = "Three note",
+//                text = "Three note",
+//                dateModification = System.currentTimeMillis()
+//            ),
+//            Note(
+//                id = 4,
+//                title = "Four note",
+//                text = "Four note",
+//                dateModification = System.currentTimeMillis()
+//            ),
+//            Note(
+//                id = 5,
+//                title = "Five note",
+//                text = "Five note",
+//                dateModification = System.currentTimeMillis()
+//            )
+//        )
     }
 }

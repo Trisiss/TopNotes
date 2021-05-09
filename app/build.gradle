@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 android {
     compileSdkVersion 30
@@ -70,6 +69,9 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     testImplementation "androidx.room:room-testing:$roomVersion"
 
+    // Koin
+    implementation "io.insert-koin:koin-android:$koinVersion"
+
     // UI
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
@@ -79,9 +81,4 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-}
-
-ktlint {
-    android.set(true)
-    outputColorName.set("RED")
 }

@@ -20,7 +20,7 @@ class NoteRepositoryImpl(private val noteDataSource: NoteDataSource, private val
     }
 
     override suspend fun getNotes(): List<Note>? =
-        noteDataSource.getNotes().map { noteMapper.fromEntity(it) }
+        noteDataSource.getNotes()?.map { noteMapper.fromEntity(it) }
 
     override fun getNote(noteId: Long): Maybe<Note> {
         TODO("Not yet implemented")

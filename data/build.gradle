@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -45,6 +46,7 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
@@ -56,6 +58,10 @@ dependencies {
     // RxKotlin
     implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$koinVersion"
+    implementation "io.insert-koin:koin-android:$koinVersion"
 
     // Test
     testImplementation 'junit:junit:4.12'

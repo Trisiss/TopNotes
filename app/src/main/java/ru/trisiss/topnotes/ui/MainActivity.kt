@@ -1,7 +1,8 @@
-package ru.trisiss.topnotes
+package ru.trisiss.topnotes.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.trisiss.topnotes.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.trisiss.domain.model.Note
 import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentNotesListBinding
@@ -18,8 +18,8 @@ class ListNotesFragment : Fragment() {
     companion object {
         fun newInstance() = ListNotesFragment()
     }
-    private lateinit var viewModel: ListNotesViewModel
-
+//    private lateinit var viewModel: ListNotesViewModel
+    val viewModel: ListNotesViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +30,7 @@ class ListNotesFragment : Fragment() {
             container,
             false
         )
-        viewModel = ViewModelProvider(this).get(ListNotesViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(ListNotesViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         val adapter = ListNotesAdapter(viewModel)
         binding.vm = viewModel

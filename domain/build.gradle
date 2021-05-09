@@ -12,6 +12,9 @@ dependencies {
     // RxKotlin
     implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$koinVersion"
 }
 
 sourceCompatibility = "1.8"
