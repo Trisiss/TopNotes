@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="java.util.Date" alias="date"/>
+        <import type="ru.trisiss.topnotes.util.DateUtil"/>
         <variable
             name="note"
             type="ru.trisiss.domain.model.Note" />
@@ -64,7 +63,7 @@
                 android:textColor="#959393"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_note"
-                android:text="@{`Last modification: ` + note.dateModification}"
+                android:text="@{`Last modification: ` + DateUtil.INSTANCE.calendarToString(note.dateModification)}"
                 tools:text="Last modification: 09.05.2021 23:12:53" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

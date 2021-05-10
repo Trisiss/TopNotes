@@ -1,5 +1,7 @@
 package ru.trisiss.domain.model
 
+import java.util.*
+
 /**
  * Represents Data model
  */
@@ -8,5 +10,5 @@ data class Note (
     val id: Long,
     val title: String,
     val text: String,
-    val dateModification: Long
+    val dateModification: Calendar
 )

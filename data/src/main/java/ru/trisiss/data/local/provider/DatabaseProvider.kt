@@ -10,6 +10,7 @@ import kotlinx.coroutines.internal.synchronized
 import kotlinx.coroutines.launch
 import ru.trisiss.data.AppDatabase
 import ru.trisiss.data.local.model.NoteEntity
+import java.util.*
 
 /**
  * Created by trisiss on 5/3/2021.
@@ -28,7 +29,7 @@ class DatabaseProvider(private val context: Context) {
     @InternalCoroutinesApi
     fun getInstance(): AppDatabase =
         database ?: synchronized(this) {
-            database ?: buildDatabase().also {database = it}
+            database ?: buildDatabase().also { database = it }
         }
 
     private fun buildDatabase(): AppDatabase =
@@ -37,7 +38,7 @@ class DatabaseProvider(private val context: Context) {
             .build()
 
     private fun onCreateDatabase() =
-        object: RoomDatabase.Callback() {
+        object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
                 GlobalScope.launch {
@@ -46,11 +47,14 @@ class DatabaseProvider(private val context: Context) {
             }
         }
 
-    private fun getDefaultNote() =
-        NoteEntity(
+    private fun getDefaultNote(): NoteEntity {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        return NoteEntity(
             id = 1,
             noteTitle = "First note",
             noteText = "It's first note for test work database",
-            timestamp = System.currentTimeMillis()
+            timestamp = calendar
         )
+    }
 }
