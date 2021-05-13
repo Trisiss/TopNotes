@@ -1,8 +1,10 @@
 package ru.trisiss.topnotes.ui.listNotes
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +17,22 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
 
     class ListNotesViewHolder(private val binding: ViewNoteBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener {
+                binding.note?.let { note ->
+                    navigateToNote(note, it)
+                }
+            }
+        }
         fun bind(note: Note, viewModel: ListNotesViewModel) {
             binding.note = note
             binding.vm = viewModel
             binding.executePendingBindings()
+        }
+
+        private fun navigateToNote(note: Note, view: View) {
+            val action = ListNotesFragmentDirections.actionListNotesFragmentToDetailNoteFragment()
+            view.findNavController().navigate(action)
         }
     }
 
