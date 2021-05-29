@@ -17,4 +17,10 @@ internal class NoteLocalDataSource(daoProvider: DaoProvider, private val noteMap
     @InternalCoroutinesApi
     override suspend fun getNotes(): List<NoteEntity>? =
      noteDao.getNotes()
+
+    @InternalCoroutinesApi
+    override suspend fun getNote(noteId: Long): NoteEntity? {
+        return noteDao.getNote(noteId)
+    }
+
 }

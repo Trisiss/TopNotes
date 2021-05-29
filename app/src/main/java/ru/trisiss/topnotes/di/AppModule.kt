@@ -2,6 +2,7 @@ package ru.trisiss.topnotes.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.trisiss.topnotes.ui.detailNote.DetailNoteViewModel
 import ru.trisiss.topnotes.ui.listNotes.ListNotesViewModel
 
 /**
@@ -10,4 +11,5 @@ import ru.trisiss.topnotes.ui.listNotes.ListNotesViewModel
 val appModule = module{
 
     viewModel { ListNotesViewModel(get()) }
+    viewModel { params -> DetailNoteViewModel(noteId = params.get(), get()) }
 }

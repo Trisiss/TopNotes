@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MinimalThemeApp" parent="Theme.AppCompat.DayNight">
+        <item name="background_edit">@style/background_edit</item>
+    </style>
+</resources>

@@ -2,36 +2,58 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="ru.trisiss.domain.model.Note"/>
+        <import type="ru.trisiss.topnotes.util.DateUtil"/>
+        <variable
+            name="vm"
+            type="ru.trisiss.topnotes.ui.detailNote.DetailNoteViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detailNote.DetailNoteFragment" >
+        tools:context=".ui.detailNote.DetailNoteFragment">
 
-        <TextView
+        <EditText
             android:id="@+id/note_title_detail"
+            style="?background_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/note_modification_detail"
+            android:layout_margin="5dp"
+            android:autofillHints="Title note"
+            android:inputType="textMultiLine"
+            android:text="@{vm.note.title}"
+            android:hint="Note title"
+            android:gravity="start|top"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="5dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/note_modification_detail" />
 
-        <TextView
+        <EditText
             android:id="@+id/note_text_detail"
+            style="?background_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/note_title_detail"
-            android:text="TextView"
-            android:layout_margin="5dp"/>
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="@{vm.note.text}"
+            android:hint="Note text"
+            android:gravity="start|top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/note_title_detail" />
 
         <TextView
             android:id="@+id/note_modification_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            android:text="@{DateUtil.INSTANCE.calendarToString(vm.note.dateModification)}"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="TextView"
-            android:layout_margin="5dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

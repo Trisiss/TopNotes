@@ -1,7 +1,6 @@
 package ru.trisiss.data.repository
 
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Maybe
 import ru.trisiss.data.local.mapper.NoteMapper
 import ru.trisiss.data.repository.datasource.NoteDataSource
 import ru.trisiss.domain.model.Note
@@ -22,7 +21,11 @@ class NoteRepositoryImpl(private val noteDataSource: NoteDataSource, private val
     override suspend fun getNotes(): List<Note>? =
         noteDataSource.getNotes()?.map { noteMapper.fromEntity(it) }
 
-    override fun getNote(noteId: Long): Maybe<Note> {
-        TODO("Not yet implemented")
+    override suspend fun getNote(noteId: Long): Note? {
+        val noteEntity = noteDataSource.getNote(noteId)
+            return when (noteEntity != null) {
+                true -> noteMapper.fromEntity(noteEntity)
+                false -> null
+        }
     }
 }

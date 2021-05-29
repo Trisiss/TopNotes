@@ -7,4 +7,5 @@ import ru.trisiss.domain.usecases.note.LoadNotes
 class LoadNotesImpl(private val repository: NoteRepository) : LoadNotes {
     override suspend fun getNotes(): List<Note>? =
         repository.getNotes()
+
 }

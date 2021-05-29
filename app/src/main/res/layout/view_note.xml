@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:onClick="@{clickListener}"
-        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

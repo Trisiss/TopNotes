@@ -31,7 +31,7 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
         }
 
         private fun navigateToNote(note: Note, view: View) {
-            val action = ListNotesFragmentDirections.actionListNotesFragmentToDetailNoteFragment()
+            val action = ListNotesFragmentDirections.actionListNotesFragmentToDetailNoteFragment(noteId = note.id)
             view.findNavController().navigate(action)
         }
     }

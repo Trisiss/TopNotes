@@ -2,8 +2,10 @@ package ru.trisiss.domain.di
 
 import org.koin.dsl.module
 import ru.trisiss.domain.usecases.note.AddNote
+import ru.trisiss.domain.usecases.note.LoadNote
 import ru.trisiss.domain.usecases.note.LoadNotes
 import ru.trisiss.domain.usecases.note.implementation.AddNoteImpl
+import ru.trisiss.domain.usecases.note.implementation.LoadNoteImpl
 import ru.trisiss.domain.usecases.note.implementation.LoadNotesImpl
 
 /**
@@ -14,5 +16,6 @@ val domainModule = module {
     // Note Use Case
     factory<AddNote> { AddNoteImpl(get()) }
     factory<LoadNotes> { LoadNotesImpl(get()) }
+    factory <LoadNote> { LoadNoteImpl(get()) }
 
 }

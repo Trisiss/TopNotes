@@ -7,10 +7,10 @@ import ru.trisiss.data.local.model.NoteEntity
 interface NoteDAO {
 
     @Query("SELECT * FROM notes ORDER BY timestamp DESC")
-    fun getNotes(): List<NoteEntity>
+    suspend fun getNotes(): List<NoteEntity>
 
     @Query("SELECT * FROM notes WHERE id = :noteId")
-    fun getNote(noteId: Long): NoteEntity
+    suspend fun getNote(noteId: Long): NoteEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(noteEntity: NoteEntity)

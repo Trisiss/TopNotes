@@ -6,6 +6,7 @@
       <module name="domain" target="1.7" />
       <module name="Top_Notes.app" target="11" />
       <module name="Top_Notes.data" target="11" />
+      <module name="TopNotes.buildSrc" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

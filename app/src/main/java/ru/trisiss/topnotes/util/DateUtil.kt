@@ -8,8 +8,8 @@ import java.util.*
  */
 object DateUtil {
 
-    fun calendarToString(calendar: Calendar): String {
+    fun calendarToString(calendar: Calendar?): String {
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        return formatter.format(calendar.time)
+        return formatter.format(calendar?.time ?: Calendar.getInstance().time)
     }
 }
