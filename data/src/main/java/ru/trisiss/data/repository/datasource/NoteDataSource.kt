@@ -8,4 +8,5 @@ import ru.trisiss.data.local.model.NoteEntity
 interface NoteDataSource {
     suspend fun getNotes(): List<NoteEntity>?
     suspend fun getNote(noteId: Long): NoteEntity?
+    suspend fun insertNote(noteEntity: NoteEntity)
 }

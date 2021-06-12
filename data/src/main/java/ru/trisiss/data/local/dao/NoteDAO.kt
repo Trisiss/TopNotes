@@ -13,7 +13,7 @@ interface NoteDAO {
     suspend fun getNote(noteId: Long): NoteEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdate(noteEntity: NoteEntity)
+    suspend fun insertOrUpdate(noteEntity: NoteEntity)
 
     @Delete
     fun delete(noteEntity: NoteEntity)

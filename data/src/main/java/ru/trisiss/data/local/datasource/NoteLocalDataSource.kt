@@ -23,4 +23,8 @@ internal class NoteLocalDataSource(daoProvider: DaoProvider, private val noteMap
         return noteDao.getNote(noteId)
     }
 
+    @InternalCoroutinesApi
+    override suspend fun insertNote(noteEntity: NoteEntity) {
+        noteDao.insertOrUpdate(noteEntity)
+    }
 }

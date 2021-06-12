@@ -21,6 +21,9 @@ class ListNotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        this.lifecycle.addObserver(viewModel)
+
         val binding = DataBindingUtil.inflate<FragmentNotesListBinding>(
             inflater,
             R.layout.fragment_notes_list,
@@ -39,5 +42,4 @@ class ListNotesFragment : Fragment() {
 
         return binding.root
     }
-
 }

@@ -1,9 +1,7 @@
 package ru.trisiss.topnotes.ui.listNotes
 
 import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
@@ -11,7 +9,7 @@ import ru.trisiss.domain.usecases.note.LoadNotes
 
 class ListNotesViewModel(
     private val loadNotesUseCase: LoadNotes
-) : ViewModel() {
+) : ViewModel(), LifecycleObserver {
     private val _clickNote = MutableLiveData<Pair<View, Note>>()
     val clickNote: LiveData<Pair<View, Note>>
         get() = _clickNote
@@ -29,6 +27,12 @@ class ListNotesViewModel(
         _clickNote.value = Pair(v, note)
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun loadData() {
+        viewModelScope.launch {
+            _listNotes.postValue(getData())
+        }
+    }
 
     private suspend fun getData(): List<Note>? {
 

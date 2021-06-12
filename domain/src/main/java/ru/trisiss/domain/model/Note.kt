@@ -5,10 +5,9 @@ import java.util.*
 /**
  * Represents Data model
  */
-//@Serializable
 data class Note (
-    val id: Long,
-    val title: String,
-    val text: String,
-    val dateModification: Calendar
+    var id: Long,
+    var title: String,
+    var text: String,
+    var dateModification: Calendar
 )

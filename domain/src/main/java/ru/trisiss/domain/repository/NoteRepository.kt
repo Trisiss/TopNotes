@@ -1,6 +1,5 @@
 package ru.trisiss.domain.repository
 
-import io.reactivex.rxjava3.core.Completable
 import ru.trisiss.domain.model.Note
 
 /**
@@ -8,9 +7,7 @@ import ru.trisiss.domain.model.Note
  */
 interface NoteRepository {
 
-    fun insertOrUpdate(note: Note): Completable
-
-    fun delete(note: Note): Completable
+    suspend fun insertOrUpdate(note: Note)
 
     suspend fun getNotes(): List<Note>?
 
