@@ -27,7 +27,6 @@ class DetailNoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             viewModel.saveNote()
             findNavController().popBackStack()
@@ -43,18 +42,6 @@ class DetailNoteFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
-
-/*        binding.noteTextDetail.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s.toString() != "") viewModel.saveChanges(binding.noteTextDetail.toString())
-            }
-        })*/
 
         return binding.root
     }

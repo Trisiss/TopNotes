@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
 import ru.trisiss.domain.usecases.note.AddNote
 import ru.trisiss.domain.usecases.note.LoadNote
+import java.util.*
 
 /**
  * Created by trisiss on 5/13/2021.
@@ -18,6 +19,7 @@ class DetailNoteViewModel(
     private val addNoteUseCase: AddNote
 ): ViewModel() {
     private var _note = MutableLiveData<Note?>(null)
+    private var tempNote: Note? = null
     val note: LiveData<Note?>
         get() = _note
 
@@ -28,23 +30,25 @@ class DetailNoteViewModel(
     }
 
     private  suspend fun getNote(noteId: Long): Note? {
-        return loadNoteUseCase.getNote(noteId)
+        var note: Note? = null
+        val job = viewModelScope.launch{
+            note = loadNoteUseCase.getNote(noteId)
+        }
+        job.join()
+        tempNote = note?.copy()
+        return note
     }
 
     fun saveNote() {
+        if (tempNote?.equals(_note.value) == true) return
         viewModelScope.launch {
             saveNoteAsync()
         }
     }
 
     private suspend fun saveNoteAsync() {
-        addNoteUseCase.addNote(_note.value!!)
-    }
-
-    fun saveChanges(text: String) {
-        val noteTemp = _note.value
-        noteTemp?.text = text
-        _note.value = noteTemp
+        _note.value?.dateModification = Calendar.getInstance()
+        _note.value?.let { addNoteUseCase.addNote(it) }
     }
 
 }
