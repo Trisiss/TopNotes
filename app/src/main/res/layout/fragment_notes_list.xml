@@ -17,7 +17,10 @@
             android:id="@+id/rvListNotes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp" />
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddNote"
@@ -26,5 +29,17 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             app:layout_anchor="@id/rvListNotes" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay" >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_notes_list"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:title="All notes"/>
+        </com.google.android.material.appbar.AppBarLayout>
     </FrameLayout>
 </layout>

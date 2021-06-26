@@ -16,6 +16,7 @@ class ListNotesFragment : Fragment() {
     companion object {
         fun newInstance() = ListNotesFragment()
     }
+
     val viewModel: ListNotesViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

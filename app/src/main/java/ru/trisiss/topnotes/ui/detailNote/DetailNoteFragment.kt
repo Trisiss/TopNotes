@@ -27,6 +27,7 @@ class DetailNoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             viewModel.saveNote()
             findNavController().popBackStack()
@@ -42,6 +43,10 @@ class DetailNoteFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
+
+        binding.toolbarNoteDetail.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         return binding.root
     }
