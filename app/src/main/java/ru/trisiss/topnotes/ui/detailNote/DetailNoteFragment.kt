@@ -11,8 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import ru.trisiss.domain.model.Note
 import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentDetailNoteBinding
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -28,12 +30,6 @@ class DetailNoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            viewModel.saveNote()
-            findNavController().popBackStack()
-        }
-        callback.isEnabled = true
-
         val binding = DataBindingUtil.inflate<FragmentDetailNoteBinding>(
             inflater,
             R.layout.fragment_detail_note,
@@ -45,10 +41,23 @@ class DetailNoteFragment : Fragment() {
         binding.vm = viewModel
 
         binding.toolbarNoteDetail.setNavigationOnClickListener {
+            saveNote(binding)
             findNavController().navigateUp()
         }
 
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            saveNote(binding)
+            findNavController().popBackStack()
+        }
+        callback.isEnabled = true
+
         return binding.root
+    }
+
+    private fun saveNote(binding: FragmentDetailNoteBinding) {
+        var newNote: Note? = null
+        if (args.noteId <= 0) newNote = Note(id = null, title = binding.noteTitleDetail.text.toString(), text = binding.noteTextDetail.text.toString(), dateModification = Calendar.getInstance())
+        viewModel.saveNote(newNote)
     }
 
     companion object {

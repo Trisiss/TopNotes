@@ -39,7 +39,10 @@ class DetailNoteViewModel(
         return note
     }
 
-    fun saveNote() {
+    fun saveNote(newNote: Note?) {
+        if (newNote != null) {
+            _note.value = newNote
+        }
         if (tempNote?.equals(_note.value) == true) return
         viewModelScope.launch {
             saveNoteAsync()
