@@ -21,7 +21,11 @@ class NoteRepositoryImpl(private val noteDataSource: NoteDataSource, private val
         }
     }
 
-    override suspend fun insertOrUpdate(note: Note) {
-        noteDataSource.insertNote(noteMapper.toEntity(note))
+    override suspend fun insertOrUpdate(note: Note, deleted: Boolean) {
+        noteDataSource.insertNote(noteMapper.toEntity(note, deleted))
+    }
+
+    override suspend fun insertOrUpdateMulti(notes: List<Note>, deleted: Boolean) {
+        noteDataSource.insertNoteMulti(noteMapper.toEntityList(notes, deleted))
     }
 }

@@ -54,7 +54,8 @@ class DatabaseProvider(private val context: Context) {
             id = 1,
             noteTitle = "First note",
             noteText = "It's first note for test work database",
-            timestamp = calendar
+            timestamp = calendar,
+            deleted = false
         )
     }
 }

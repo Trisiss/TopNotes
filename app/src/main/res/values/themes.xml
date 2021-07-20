@@ -4,7 +4,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="background_edit">@style/background_edit</item>
+        <item name="backgroundEdit">@style/background_edit</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <item name="actionModeSplitBackground">@color/colorPrimary</item>
     </style>
     
     <style name="Theme.MinimalThemeApp" parent="Base.Theme.MinimalThemeApp" />

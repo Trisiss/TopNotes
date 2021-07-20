@@ -7,7 +7,9 @@ import ru.trisiss.domain.model.Note
  */
 interface NoteRepository {
 
-    suspend fun insertOrUpdate(note: Note)
+    suspend fun insertOrUpdate(note: Note, deleted: Boolean)
+
+    suspend fun insertOrUpdateMulti(notes: List<Note>, deleted: Boolean)
 
     suspend fun getNotes(): List<Note>?
 

@@ -10,6 +10,6 @@ import ru.trisiss.topnotes.ui.listNotes.ListNotesViewModel
  */
 val appModule = module{
 
-    viewModel { ListNotesViewModel(get()) }
+    viewModel { ListNotesViewModel(get(), get()) }
     viewModel { params -> DetailNoteViewModel(noteId = params.get(), get(), get()) }
 }

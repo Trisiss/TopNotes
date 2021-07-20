@@ -79,6 +79,7 @@ dependencies {
     // UI
     implementation(Dependencies.ui.recycler)
     implementation(Dependencies.ui.constraint)
+    implementation(Dependencies.ui.recyclerSelection)
     
     // Test
     testImplementation(Dependencies.test.junit)

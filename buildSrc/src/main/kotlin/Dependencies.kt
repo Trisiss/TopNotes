@@ -90,8 +90,9 @@ object Koin {
 }
 
 object UI {
-    val recycler = "androidx.recyclerview:recyclerview:1.1.0"
+    val recycler = "androidx.recyclerview:recyclerview:1.2.1"
     val constraint = "androidx.constraintlayout:constraintlayout:2.0.0"
+    val recyclerSelection = "androidx.recyclerview:recyclerview-selection:1.0.0"
 }
 
 object Test {

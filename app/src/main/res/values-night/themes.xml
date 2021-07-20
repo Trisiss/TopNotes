@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Base.Theme.MinimalThemeApp" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="background_edit">@style/background_edit</item>
+        <item name="backgroundEdit">@style/background_edit</item>
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <style name="Theme.MinimalThemeApp" parent="Base.Theme.MinimalThemeApp" />
