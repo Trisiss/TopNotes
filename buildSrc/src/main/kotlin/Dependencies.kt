@@ -8,7 +8,7 @@ object AndroidSDK {
 }
 object Releases {
     const val versionCode = 1
-    const val versionName = "0.1.1"
+    const val versionName = "0.1.0"
 }
 
 object Versions {
