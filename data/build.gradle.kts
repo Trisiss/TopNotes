@@ -4,6 +4,7 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlinx-serialization")
     id("kotlin-kapt")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
