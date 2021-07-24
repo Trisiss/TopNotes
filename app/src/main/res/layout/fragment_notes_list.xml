@@ -22,22 +22,22 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListNotes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            tools:listitem="@layout/view_note"/>
+            tools:listitem="@layout/view_note" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginBottom="17dp"
             android:onClick="@{() -> callback.add()}"
             android:src="@drawable/ic_baseline_add_24"
@@ -47,18 +47,21 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintBottom_toTopOf="@+id/rvListNotes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_notes_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="All notes"
+                android:layout_height="60dp"
+                android:background="@color/colorPrimary"
                 app:menu="@menu/menu_notes_list"
-                android:background="@color/colorPrimary" />
+                app:title="All notes" />
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
