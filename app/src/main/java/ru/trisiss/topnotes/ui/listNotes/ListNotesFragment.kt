@@ -44,11 +44,10 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         setHasOptionsMenu(true)
 
         binding.lifecycleOwner = viewLifecycleOwner
-        adapter = ListNotesAdapter(viewModel, this)
+        adapter = ListNotesAdapter(viewModel)
         binding.vm = viewModel
         binding.rvListNotes.layoutManager = LinearLayoutManager(activity)
         binding.rvListNotes.adapter = adapter
-//        binding.rvListNotes.setHasFixedSize(true)
         tracker = SelectionTracker.Builder(
             "mySelection",
             binding.rvListNotes,
@@ -61,9 +60,7 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         adapter.tracker = tracker
 
         viewModel.listNotes.observe(viewLifecycleOwner, { listNotes ->
-            // Do this because don't update list notes
-            adapter.submitList(null)
-            adapter.submitList(listNotes)
+            adapter.updateList(listNotes)
         })
 
         tracker?.addObserver(
@@ -113,7 +110,9 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
         return when (item!!.itemId) {
             R.id.actionDeleteNote -> {
-                    viewModel.markDeletedNote(tracker.selection.map { adapter.currentList[it.toInt()] })
+//                    viewModel.markDeletedNote(tracker.selection.map { adapter.notes[it.toInt()] })
+                val selectedNotes = adapter.notes.filter { tracker.selection.contains(it.id) }
+                    viewModel.markDeletedNote(selectedNotes)
                 mode?.finish()
                 viewModel.loadData()
                 true
