@@ -21,7 +21,6 @@ class ListNotesViewModel(
         }
     }
 
-
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun loadData() {
         viewModelScope.launch {
@@ -35,7 +34,7 @@ class ListNotesViewModel(
 
     fun markDeletedNote(notes: List<Note>) {
         viewModelScope.launch {
-                markDeletedNoteAsync(notes)
+            markDeletedNoteAsync(notes)
         }
     }
 

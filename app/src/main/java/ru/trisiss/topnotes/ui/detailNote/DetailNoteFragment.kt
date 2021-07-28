@@ -26,7 +26,8 @@ class DetailNoteFragment : Fragment() {
     private val args: DetailNoteFragmentArgs by navArgs()
     val viewModel: DetailNoteViewModel by viewModel { parametersOf(args.noteId) }
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 

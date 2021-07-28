@@ -24,7 +24,9 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
+            proguardFiles(
+                getDefaultProguardFile
+                ("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -37,10 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
-
-
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

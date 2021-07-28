@@ -17,7 +17,7 @@ class DetailNoteViewModel(
     val noteId: Long,
     private val loadNoteUseCase: LoadNote,
     private val addNoteUseCase: AddNote
-): ViewModel() {
+) : ViewModel() {
     private var _note = MutableLiveData<Note?>(null)
     private var tempNote: Note? = null
     val note: LiveData<Note?>
@@ -29,9 +29,9 @@ class DetailNoteViewModel(
         }
     }
 
-    private  suspend fun getNote(noteId: Long): Note? {
+    private suspend fun getNote(noteId: Long): Note? {
         var note: Note? = null
-        val job = viewModelScope.launch{
+        val job = viewModelScope.launch {
             note = loadNoteUseCase.getNote(noteId)
         }
         job.join()
@@ -53,5 +53,4 @@ class DetailNoteViewModel(
         _note.value?.dateModification = Calendar.getInstance()
         _note.value?.let { addNoteUseCase.addNote(it) }
     }
-
 }

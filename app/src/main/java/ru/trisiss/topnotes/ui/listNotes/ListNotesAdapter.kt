@@ -53,7 +53,7 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
     override fun getItemCount(): Int = notes.size
 
     inner class ListNotesViewHolder(private val binding: ViewNoteBinding) :
-        RecyclerView.ViewHolder(binding.root){
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
                 binding.note?.let { note ->
