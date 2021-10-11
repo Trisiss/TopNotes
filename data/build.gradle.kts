@@ -1,23 +1,18 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlinx-serialization")
     id("kotlin-kapt")
     id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
     compileSdkVersion(AndroidSDK.compileVersion)
-    buildToolsVersion = "30.0.0"
+    buildToolsVersion = "30.0.2"
 
     defaultConfig {
-        minSdkVersion(AndroidSDK.minimalVersion)
-        targetSdkVersion(AndroidSDK.targetVersion)
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = AndroidSDK.minimalVersion
+        targetSdk = AndroidSDK.targetVersion
 
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
         consumerProguardFiles("consumer-rules.pro")
     }
     buildTypes {
@@ -56,9 +51,6 @@ dependencies {
     // Coroutines
     implementation(Dependencies.kotlin.coroutines.android)
     implementation(Dependencies.kotlin.coroutines.core)
-
-    // Work
-//    implementation "androidx.work:work-runtime-ktx:$Versions.workVersion"
 
     // Koin
     implementation(Dependencies.koin.core)

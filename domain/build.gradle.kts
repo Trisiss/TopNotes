@@ -1,7 +1,6 @@
 plugins {
     id("java-library")
     id("kotlin")
-    id("kotlinx-serialization")
     id("org.jlleitschuh.gradle.ktlint")
 }
 

@@ -1,22 +1,21 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
-    compileSdkVersion(AndroidSDK.compileVersion)
-    buildToolsVersion = "29.0.3"
+    compileSdk = AndroidSDK.compileVersion
+    buildToolsVersion = "30.0.2"
 
     defaultConfig {
         applicationId = "ru.trisiss.topnotes"
-        minSdkVersion(AndroidSDK.minimalVersion)
-        targetSdkVersion(AndroidSDK.targetVersion)
-        versionCode(Releases.versionCode)
-        versionName(Releases.versionName)
+        minSdk = AndroidSDK.minimalVersion
+        targetSdk = AndroidSDK.targetVersion
+        versionCode = Releases.versionCode
+        versionName = Releases.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,7 +23,8 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -39,8 +39,6 @@ android {
     }
 
 }
-
-
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
