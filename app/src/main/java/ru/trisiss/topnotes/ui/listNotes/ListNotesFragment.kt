@@ -16,7 +16,6 @@ import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentNotesListBinding
 import ru.trisiss.topnotes.ui.MainActivity
 
-
 class ListNotesFragment : Fragment(), ActionMode.Callback {
 
     companion object {
@@ -29,7 +28,8 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     private var actionMode: ActionMode? = null
     lateinit var adapter: ListNotesAdapter
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -59,7 +59,9 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         ).build()
         adapter.tracker = tracker
 
-        viewModel.listNotes.observe(viewLifecycleOwner, { listNotes ->
+        viewModel.listNotes.observe(
+            viewLifecycleOwner,
+            { listNotes ->
             adapter.updateList(listNotes)
         })
 
@@ -81,7 +83,6 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
                         } else {
                             actionMode?.finish()
                         }
-
                 }
             })
 

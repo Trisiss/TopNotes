@@ -1,0 +1,4 @@
+[*.{kt,kts}]
+# true (recommended) / false
+insert_final_newline=unset
+

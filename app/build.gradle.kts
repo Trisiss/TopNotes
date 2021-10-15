@@ -43,7 +43,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 dependencies {
@@ -85,9 +84,16 @@ dependencies {
     implementation(Dependencies.ui.recycler)
     implementation(Dependencies.ui.constraint)
     implementation(Dependencies.ui.recyclerSelection)
-    
+
     // Test
     testImplementation(Dependencies.test.junit)
     androidTestImplementation(Dependencies.test.androidJunit)
     androidTestImplementation(Dependencies.test.espresso)
+}
+
+ktlint {
+    android.set(true)
+    outputColorName.set("RED")
+    additionalEditorconfigFile.set(file("../config/ktlint/.editorconfig"))
+    disabledRules.set(setOf("final-newline"))
 }

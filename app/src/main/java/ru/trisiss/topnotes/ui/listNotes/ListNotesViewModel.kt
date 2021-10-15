@@ -21,7 +21,6 @@ class ListNotesViewModel(
         }
     }
 
-
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun loadData() {
         viewModelScope.launch {
