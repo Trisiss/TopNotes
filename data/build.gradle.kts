@@ -14,6 +14,12 @@ android {
         targetSdk = AndroidSDK.targetVersion
 
         consumerProguardFiles("consumer-rules.pro")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
     }
     buildTypes {
         getByName("release") {

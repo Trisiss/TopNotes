@@ -18,6 +18,12 @@ android {
         versionName = Releases.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
     }
     android.buildFeatures.dataBinding = true
     buildTypes {
