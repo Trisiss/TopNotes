@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidSDK.compileVersion)
+    compileSdk = AndroidSDK.compileVersion
     buildToolsVersion = "30.0.2"
 
     defaultConfig {
@@ -67,4 +67,11 @@ dependencies {
     androidTestImplementation(Dependencies.test.androidJunit)
     androidTestImplementation(Dependencies.test.espresso)
 
+}
+
+ktlint {
+    android.set(true)
+    outputColorName.set("RED")
+    additionalEditorconfigFile.set(file("../config/ktlint/.editorconfig"))
+    disabledRules.set(setOf("final-newline"))
 }
