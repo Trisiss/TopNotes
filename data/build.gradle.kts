@@ -74,4 +74,5 @@ ktlint {
     outputColorName.set("RED")
     additionalEditorconfigFile.set(file("../config/ktlint/.editorconfig"))
     disabledRules.set(setOf("final-newline"))
+    ignoreFailures.set(true)
 }
