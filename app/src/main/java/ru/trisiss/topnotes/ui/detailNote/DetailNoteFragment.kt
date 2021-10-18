@@ -26,7 +26,8 @@ class DetailNoteFragment : Fragment() {
     private val args: DetailNoteFragmentArgs by navArgs()
     val viewModel: DetailNoteViewModel by viewModel { parametersOf(args.noteId) }
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -56,7 +57,12 @@ class DetailNoteFragment : Fragment() {
 
     private fun saveNote(binding: FragmentDetailNoteBinding) {
         var newNote: Note? = null
-        if (args.noteId <= 0) newNote = Note(id = null, title = binding.noteTitleDetail.text.toString(), text = binding.noteTextDetail.text.toString(), dateModification = Calendar.getInstance())
+        if (args.noteId <= 0) newNote = Note(
+            id = null,
+            title = binding.noteTitleDetail.text.toString(),
+            text = binding.noteTextDetail.text.toString(),
+            dateModification = Calendar.getInstance()
+        )
         viewModel.saveNote(newNote)
     }
 

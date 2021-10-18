@@ -53,7 +53,7 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
     override fun getItemCount(): Int = notes.size
 
     inner class ListNotesViewHolder(private val binding: ViewNoteBinding) :
-        RecyclerView.ViewHolder(binding.root){
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
                 binding.note?.let { note ->
@@ -61,6 +61,7 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
                 }
             }
         }
+
         fun bind(note: Note, viewModel: ListNotesViewModel, selected: Boolean) {
             binding.note = note
             binding.vm = viewModel
@@ -69,7 +70,10 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
         }
 
         private fun navigateToNote(note: Note, view: View) {
-            val action = ListNotesFragmentDirections.actionListNotesFragmentToDetailNoteFragment(noteId = note.id ?: 0L)
+            val action = ListNotesFragmentDirections
+                .actionListNotesFragmentToDetailNoteFragment(
+                noteId = note.id ?: 0L
+            )
             view.findNavController().navigate(action)
         }
 
