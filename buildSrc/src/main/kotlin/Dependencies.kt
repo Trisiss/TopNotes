@@ -5,6 +5,7 @@ object AndroidSDK {
     const val compileVersion = 30
     const val targetVersion = 30
     const val minimalVersion = 21
+    const val buildToolVersion = "30.0.2"
 }
 object Releases {
     const val versionCode = 3
@@ -12,21 +13,24 @@ object Releases {
 }
 
 object Versions {
-    const val kotlinVersion = "1.4.0"
-    const val kotlinLibVersion = "1.4.10"
-    const val viewModelVersion = "2.2.0"
-    const val navVersion = "2.3.0"
-    const val roomVersion = "2.2.5"
-    const val ktlintVersion = "9.3.0"
-    const val coroutinesVersion = "1.4.3"
-    const val workVersion = "2.4.0"
-    const val rxKotlinVersion = "3.0.0"
-    const val rxAndroidVersion = "3.0.0"
-    const val junitVersion = "1.1.2"
-    const val espressoVersion = "3.3.0"
-    const val koinVersion = "3.0.1"
-    const val appCompatVersion = "1.2.0"
-    const val serializationVersion = "0.20.0"
+    const val kotlin = "1.4.0"
+    const val kotlinLib = "1.4.10"
+    const val viewModel = "2.2.0"
+    const val nav = "2.3.0"
+    const val room = "2.2.5"
+    const val coroutines = "1.4.3"
+    const val androidJunit = "1.1.2"
+    const val junit = "4.12"
+    const val espresso = "3.3.0"
+    const val koin = "3.0.1"
+    const val appCompat = "1.2.0"
+    const val androidxCore = "1.3.1"
+    const val legacySupport = "1.0.0"
+    const val lifeCycleExtensions = "1.1.1"
+    const val livedataKtx = "2.3.1"
+    const val recycler = "1.2.1"
+    const val constraint = "2.0.0"
+    const val recyclerSelection = "1.0.0"
 }
 
 object Dependencies {
@@ -42,62 +46,61 @@ object Dependencies {
 }
 
 object KotlinDeps {
-    val stdLib7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
-    val stdLib8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinLibVersion}"
-    val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinLibVersion}"
-    val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.serializationVersion}"
+    val stdLib7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    val stdLib8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinLib}"
+    val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinLib}"
     val coroutines = CoroutinesDeps
 }
 
 object CoroutinesDeps {
-    val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
-    val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
+    val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 }
 
 object AndroidDeps {
-    val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
-    val core = "androidx.core:core-ktx:1.3.1"
-    val legacySupport = "androidx.legacy:legacy-support-v4:1.0.0"
-    val lifeCycleExtensions = "android.arch.lifecycle:extensions:1.1.1"
+    val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    val core = "androidx.core:core-ktx:${Versions.androidxCore}"
+    val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
+    val lifeCycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifeCycleExtensions}"
 }
 
 object ViewModelDeps {
-    val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.viewModelVersion}"
-    val ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelVersion}"
+    val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.viewModel}"
+    val ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
 }
 
 object NavigationDeps {
-    val fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
-    val ui = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
-    val dynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navVersion}"
-    val test = "androidx.navigation:navigation-testing:${Versions.navVersion}"
+    val fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav}"
+    val ui = "androidx.navigation:navigation-ui-ktx:${Versions.nav}"
+    val dynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.nav}"
+    val test = "androidx.navigation:navigation-testing:${Versions.nav}"
 }
 
 object LiveData {
-    val ktx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    val ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedataKtx}"
 }
 
 object Room {
-    val runtime = "androidx.room:room-runtime:${Versions.roomVersion}"
-    val compiler = "androidx.room:room-compiler:${Versions.roomVersion}"
-    val ktx = "androidx.room:room-ktx:${Versions.roomVersion}"
-    val test = "androidx.room:room-testing:${Versions.roomVersion}"
+    val runtime = "androidx.room:room-runtime:${Versions.room}"
+    val compiler = "androidx.room:room-compiler:${Versions.room}"
+    val ktx = "androidx.room:room-ktx:${Versions.room}"
+    val test = "androidx.room:room-testing:${Versions.room}"
 }
 
 object Koin {
-    val android = "io.insert-koin:koin-android:${Versions.koinVersion}"
-    val core = "io.insert-koin:koin-core:${Versions.koinVersion}"
+    val android = "io.insert-koin:koin-android:${Versions.koin}"
+    val core = "io.insert-koin:koin-core:${Versions.koin}"
 }
 
 object UI {
-    val recycler = "androidx.recyclerview:recyclerview:1.2.1"
-    val constraint = "androidx.constraintlayout:constraintlayout:2.0.0"
-    val recyclerSelection = "androidx.recyclerview:recyclerview-selection:1.0.0"
+    val recycler = "androidx.recyclerview:recyclerview:${Versions.recycler}"
+    val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
+    val recyclerSelection = "androidx.recyclerview:recyclerview-selection:${Versions.recyclerSelection}"
 }
 
 object Test {
-    val junit = "junit:junit:4.12"
-    val androidJunit = "androidx.test.ext:junit:1.1.1"
-    val espresso = "androidx.test.espresso:espresso-core:3.2.0"
+    val junit = "junit:junit:${Versions.junit}"
+    val androidJunit = "androidx.test.ext:junit:${Versions.androidJunit}"
+    val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 }
 

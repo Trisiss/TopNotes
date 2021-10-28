@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     id("kotlin")
     id("org.jlleitschuh.gradle.ktlint")
+    id("name.remal.check-dependency-updates") version "1.5.0"
 }
 
 dependencies {

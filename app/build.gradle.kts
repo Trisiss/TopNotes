@@ -4,11 +4,12 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jlleitschuh.gradle.ktlint")
+    id("name.remal.check-dependency-updates") version "1.5.0"
 }
 
 android {
     compileSdk = AndroidSDK.compileVersion
-    buildToolsVersion = "30.0.2"
+    buildToolsVersion = AndroidSDK.buildToolVersion
 
     defaultConfig {
         applicationId = "ru.trisiss.topnotes"
