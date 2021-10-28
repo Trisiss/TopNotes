@@ -13,24 +13,23 @@ object Releases {
 }
 
 object Versions {
-    const val kotlin = "1.4.0"
-    const val kotlinLib = "1.4.10"
-    const val viewModel = "2.2.0"
-    const val nav = "2.3.0"
-    const val room = "2.2.5"
-    const val coroutines = "1.4.3"
-    const val androidJunit = "1.1.2"
-    const val junit = "4.12"
-    const val espresso = "3.3.0"
-    const val koin = "3.0.1"
-    const val appCompat = "1.2.0"
-    const val androidxCore = "1.3.1"
+    const val kotlin = "1.5.31"
+    const val kotlinLib = "1.5.31"
+    const val viewModel = "2.4.0"
+    const val nav = "2.3.5"
+    const val room = "2.3.0"
+    const val coroutines = "1.5.2"
+    const val androidJunit = "1.1.3"
+    const val junit = "4.13.2"
+    const val espresso = "3.4.0"
+    const val koin = "3.1.3"
+    const val appCompat = "1.3.1"
+    const val androidxCore = "1.7.0"
     const val legacySupport = "1.0.0"
-    const val lifeCycleExtensions = "1.1.1"
-    const val livedataKtx = "2.3.1"
+    const val livedataKtx = "2.4.0"
     const val recycler = "1.2.1"
-    const val constraint = "2.0.0"
-    const val recyclerSelection = "1.0.0"
+    const val constraint = "2.1.1"
+    const val recyclerSelection = "1.1.0"
 }
 
 object Dependencies {
@@ -61,11 +60,9 @@ object AndroidDeps {
     val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     val core = "androidx.core:core-ktx:${Versions.androidxCore}"
     val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
-    val lifeCycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifeCycleExtensions}"
 }
 
 object ViewModelDeps {
-    val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.viewModel}"
     val ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
 }
 

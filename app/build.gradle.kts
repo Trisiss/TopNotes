@@ -40,7 +40,6 @@ android {
         sourceCompatibility(JavaVersion.VERSION_1_8)
         targetCompatibility(JavaVersion.VERSION_1_8)
     }
-    // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -52,12 +51,11 @@ dependencies {
     implementation(Dependencies.android.appCompat)
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.legacySupport)
-    implementation(Dependencies.android.lifeCycleExtensions)
+
     implementation(project(path = ":domain"))
     implementation(project(path = ":data"))
 
     // ViewModel
-    implementation(Dependencies.viewModel.extensions)
     implementation(Dependencies.viewModel.ktx)
 
     // Navigation
