@@ -7,50 +7,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.trisiss.domain.model.Note
 import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.ViewNoteBinding
 
-class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
-    RecyclerView.Adapter<ListNotesAdapter.ListNotesViewHolder>() {
-
-    val notes = mutableListOf<Note>()
+class ListNotesAdapter(
+    private val viewModel: ListNotesViewModel
+) :
+    ListAdapter<Note, ListNotesAdapter.ListNotesViewHolder>(NoteDiffCallback) {
 
     init {
         setHasStableIds(true)
     }
 
     var tracker: SelectionTracker<Long>? = null
-
-    fun updateList(newList: List<Note>) {
-        notes.clear()
-        notes.addAll(newList)
-        notifyDataSetChanged()
-    }
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNotesViewHolder {
-        return ListNotesViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.view_note,
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: ListNotesViewHolder, position: Int) {
-        val currentNote = notes[position]
-//        holder.bind(currentNote, viewModel)
-        tracker?.let {
-            holder.bind(currentNote, viewModel, it.isSelected(currentNote.id))
-        }
-    }
-
-    override fun getItemCount(): Int = notes.size
 
     inner class ListNotesViewHolder(private val binding: ViewNoteBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -70,8 +43,7 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
         }
 
         private fun navigateToNote(note: Note, view: View) {
-            val action = ListNotesFragmentDirections
-                .actionListNotesFragmentToDetailNoteFragment(
+            val action = ListNotesFragmentDirections.actionListNotesFragmentToDetailNoteFragment(
                 noteId = note.id ?: 0L
             )
             view.findNavController().navigate(action)
@@ -79,8 +51,38 @@ class ListNotesAdapter(private val viewModel: ListNotesViewModel) :
 
         fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> =
             object : ItemDetailsLookup.ItemDetails<Long>() {
-                override fun getPosition(): Int = adapterPosition
-                override fun getSelectionKey(): Long = notes[adapterPosition].id!!
+                override fun getPosition(): Int = bindingAdapterPosition
+                override fun getSelectionKey(): Long = getItemId(bindingAdapterPosition)
             }
+    }
+
+    override fun getItemId(position: Int): Long = getItem(position).id!!
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNotesViewHolder {
+        return ListNotesViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.view_note,
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ListNotesViewHolder, position: Int) {
+        val currentNote = getItem(position)
+        tracker?.let {
+            holder.bind(currentNote, viewModel, it.isSelected(currentNote.id))
+        }
+    }
+}
+
+object NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.dateModification == newItem.dateModification && oldItem.title == newItem.title && oldItem.text == newItem.text
     }
 }

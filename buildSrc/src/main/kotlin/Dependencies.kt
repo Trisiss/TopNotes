@@ -2,8 +2,8 @@
  * Created by trisiss on 5/30/2021.
  */
 object AndroidSDK {
-    const val compileVersion = 30
-    const val targetVersion = 30
+    const val compileVersion = 31
+    const val targetVersion = 31
     const val minimalVersion = 21
     const val buildToolVersion = "30.0.2"
 }

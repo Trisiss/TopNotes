@@ -31,10 +31,9 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_1_8)
-        targetCompatibility(JavaVersion.VERSION_1_8)
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-    // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
         jvmTarget = "1.8"
     }

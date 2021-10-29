@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 class NoteItemKeyProvider(private val recyclerView: RecyclerView) :
     ItemKeyProvider<Long>(SCOPE_CACHED) {
 
-    override fun getKey(position: Int): Long? {
-        return (recyclerView.adapter as ListNotesAdapter).notes[position].id
+    override fun getKey(position: Int): Long {
+        return (recyclerView.adapter as ListNotesAdapter).getItemId(position = position)
     }
 
     override fun getPosition(key: Long): Int {
-        return (recyclerView.adapter as ListNotesAdapter).notes.indexOfFirst { it.id == key }
+        val viewHolder = recyclerView.findViewHolderForItemId(key)
+        return viewHolder?.layoutPosition ?: RecyclerView.NO_POSITION
     }
 }
