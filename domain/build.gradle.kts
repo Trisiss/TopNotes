@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     id("kotlin")
     id("org.jlleitschuh.gradle.ktlint")
+    id("name.remal.check-dependency-updates") version "1.5.0"
 }
 
 dependencies {
@@ -14,6 +15,9 @@ dependencies {
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 java.targetCompatibility = JavaVersion.VERSION_1_8
+
+val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
+compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
 ktlint {
     outputColorName.set("RED")

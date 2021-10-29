@@ -3,11 +3,12 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("org.jlleitschuh.gradle.ktlint")
+    id("name.remal.check-dependency-updates") version "1.5.0"
 }
 
 android {
     compileSdk = AndroidSDK.compileVersion
-    buildToolsVersion = "30.0.2"
+    buildToolsVersion = AndroidSDK.buildToolVersion
 
     defaultConfig {
         minSdk = AndroidSDK.minimalVersion
@@ -30,10 +31,9 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_1_8)
-        targetCompatibility(JavaVersion.VERSION_1_8)
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-    // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -45,9 +45,6 @@ dependencies {
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.appCompat)
     implementation(project(path = ":domain"))
-
-    // Serialization
-    implementation(Dependencies.kotlin.serialization)// JVM dependency
 
     // Room
     implementation(Dependencies.room.runtime)
