@@ -1,7 +1,6 @@
 package ru.trisiss.topnotes.ui.listNotes
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
 import ru.trisiss.domain.usecases.note.AddNote
@@ -16,9 +15,7 @@ class ListNotesViewModel(
         get() = _listNotes
 
     init {
-        GlobalScope.launch {
-            _listNotes.postValue(getData())
-        }
+        loadData()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -34,8 +31,9 @@ class ListNotesViewModel(
 
     fun markDeletedNote(notes: List<Note>) {
         viewModelScope.launch {
-                markDeletedNoteAsync(notes)
+            markDeletedNoteAsync(notes)
         }
+        _listNotes.value = listNotes.value?.filter { !notes.contains(it) }
     }
 
     private suspend fun markDeletedNoteAsync(notes: List<Note>) {

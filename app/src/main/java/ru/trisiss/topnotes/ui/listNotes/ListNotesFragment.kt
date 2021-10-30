@@ -111,11 +111,9 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
         return when (item!!.itemId) {
             R.id.actionDeleteNote -> {
-//                    viewModel.markDeletedNote(tracker.selection.map { adapter.notes[it.toInt()] })
                 val selectedNotes = adapter.currentList.filter { tracker.selection.contains(it.id) }
                 viewModel.markDeletedNote(selectedNotes)
                 mode?.finish()
-                viewModel.loadData()
                 true
             }
             else -> {
