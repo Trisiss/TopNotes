@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
 import ru.trisiss.domain.usecases.note.AddNote
@@ -17,7 +18,7 @@ class DetailNoteViewModel(
     val noteId: Long,
     private val loadNoteUseCase: LoadNote,
     private val addNoteUseCase: AddNote
-): ViewModel() {
+) : ViewModel() {
     private var _note = MutableLiveData<Note?>(null)
     private var tempNote: Note? = null
     val note: LiveData<Note?>
@@ -29,12 +30,9 @@ class DetailNoteViewModel(
         }
     }
 
-    private  suspend fun getNote(noteId: Long): Note? {
-        var note: Note? = null
-        val job = viewModelScope.launch{
-            note = loadNoteUseCase.getNote(noteId)
-        }
-        job.join()
+    private suspend fun getNote(noteId: Long): Note? {
+        val asyncNote = viewModelScope.async { loadNoteUseCase.getNote(noteId) }
+        val note = asyncNote.await()
         tempNote = note?.copy()
         return note
     }
@@ -53,5 +51,4 @@ class DetailNoteViewModel(
         _note.value?.dateModification = Calendar.getInstance()
         _note.value?.let { addNoteUseCase.addNote(it) }
     }
-
 }

@@ -16,7 +16,6 @@ import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentNotesListBinding
 import ru.trisiss.topnotes.ui.MainActivity
 
-
 class ListNotesFragment : Fragment(), ActionMode.Callback {
 
     companion object {
@@ -29,7 +28,8 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     private var actionMode: ActionMode? = null
     lateinit var adapter: ListNotesAdapter
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -59,9 +59,11 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         ).build()
         adapter.tracker = tracker
 
-        viewModel.listNotes.observe(viewLifecycleOwner, { listNotes ->
-            adapter.updateList(listNotes)
-        })
+        viewModel.listNotes.observe(
+            viewLifecycleOwner,
+            { listNotes ->
+                adapter.submitList(listNotes)
+            })
 
         tracker?.addObserver(
             object : SelectionTracker.SelectionObserver<Long>() {
@@ -75,13 +77,12 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
                         actionMode = currentActivity.startSupportActionMode(this@ListNotesFragment)
                     }
 
-                        val items = tracker.selection.size()
-                        if (items > 0) {
-                            actionMode?.title = "$items selected"
-                        } else {
-                            actionMode?.finish()
-                        }
-
+                    val items = tracker.selection.size()
+                    if (items > 0) {
+                        actionMode?.title = "$items selected"
+                    } else {
+                        actionMode?.finish()
+                    }
                 }
             })
 
@@ -110,11 +111,9 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
         return when (item!!.itemId) {
             R.id.actionDeleteNote -> {
-//                    viewModel.markDeletedNote(tracker.selection.map { adapter.notes[it.toInt()] })
-                val selectedNotes = adapter.notes.filter { tracker.selection.contains(it.id) }
-                    viewModel.markDeletedNote(selectedNotes)
+                val selectedNotes = adapter.currentList.filter { tracker.selection.contains(it.id) }
+                viewModel.markDeletedNote(selectedNotes)
                 mode?.finish()
-                viewModel.loadData()
                 true
             }
             else -> {

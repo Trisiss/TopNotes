@@ -16,16 +16,15 @@ class TopNotesApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-       startKoin {
-           androidLogger()
-           androidContext(this@TopNotesApp)
-           modules(
-               appModule +
-                       localModule +
-                       repositoryModule +
-                       domainModule
-           )
-       }
+        startKoin {
+            androidLogger()
+            androidContext(this@TopNotesApp)
+            modules(
+        appModule +
+                localModule +
+                repositoryModule +
+                domainModule
+            )
+        }
     }
-
 }
