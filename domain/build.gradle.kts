@@ -11,6 +11,9 @@ dependencies {
 
     // Koin
     implementation(Dependencies.koin.core)
+
+    // Coroutines
+    implementation(Dependencies.kotlin.coroutines.core)
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8

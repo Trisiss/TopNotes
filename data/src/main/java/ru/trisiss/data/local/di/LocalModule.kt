@@ -13,7 +13,7 @@ import ru.trisiss.data.repository.datasource.NoteDataSource
 val localModule = module {
 
     // Data Sources
-    single<NoteDataSource> { NoteLocalDataSource(get(), get()) }
+    single<NoteDataSource> { NoteLocalDataSource(get()) }
 
     // Mappers
     factory { NoteMapper() }

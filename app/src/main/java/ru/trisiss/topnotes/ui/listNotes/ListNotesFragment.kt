@@ -6,11 +6,16 @@ import android.view.*
 import androidx.appcompat.view.ActionMode
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentNotesListBinding
@@ -59,11 +64,19 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         ).build()
         adapter.tracker = tracker
 
-        viewModel.listNotes.observe(
-            viewLifecycleOwner,
-            { listNotes ->
-                adapter.submitList(listNotes)
-            })
+        lifecycleScope.launch {
+            // repeatOnLifecycle launches the block in a new coroutine every time the
+            // lifecycle is in the STARTED state (or above) and cancels it when it's STOPPED.
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // Trigger the flow and start listening for values.
+                // Note that this happens when lifecycle is STARTED and stops
+                // collecting when the lifecycle is STOPPED
+                viewModel.listNotes.collect {
+                    adapter.submitList(it)
+                }
+            }
+        }
+
 
         tracker?.addObserver(
             object : SelectionTracker.SelectionObserver<Long>() {
@@ -97,6 +110,11 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getData()
+    }
+
     interface Callback {
         fun add()
     }
@@ -111,11 +129,9 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
         return when (item!!.itemId) {
             R.id.actionDeleteNote -> {
-//                    viewModel.markDeletedNote(tracker.selection.map { adapter.notes[it.toInt()] })
                 val selectedNotes = adapter.currentList.filter { tracker.selection.contains(it.id) }
                 viewModel.markDeletedNote(selectedNotes)
                 mode?.finish()
-                viewModel.loadData()
                 true
             }
             else -> {
