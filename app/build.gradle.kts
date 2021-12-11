@@ -53,6 +53,7 @@ dependencies {
     implementation(Dependencies.android.appCompat)
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.legacySupport)
+    implementation(Dependencies.android.lifeCycle)
 
     implementation(project(path = ":domain"))
     implementation(project(path = ":data"))
