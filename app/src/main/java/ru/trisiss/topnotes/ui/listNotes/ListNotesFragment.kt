@@ -110,6 +110,11 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getData()
+    }
+
     interface Callback {
         fun add()
     }
