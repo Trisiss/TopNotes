@@ -13,7 +13,6 @@ val domainModule = module {
 
     // Note Use Case
     factory<SaveNote> { SaveNoteImpl(get()) }
-    factory<LoadNotes> { LoadNotesImpl(get()) }
     factory <LoadNote> { LoadNoteImpl(get()) }
 
 }
