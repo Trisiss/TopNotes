@@ -1,5 +1,6 @@
 package ru.trisiss.domain.repository
 
+import kotlinx.coroutines.flow.Flow
 import ru.trisiss.domain.model.Note
 
 /**
@@ -11,7 +12,7 @@ interface NoteRepository {
 
     suspend fun insertOrUpdateMulti(notes: List<Note>, deleted: Boolean)
 
-    suspend fun getNotes(): List<Note>?
+    suspend fun getNotes(): Flow<List<Note>>
 
-    suspend fun getNote(noteId: Long): Note?
+    suspend fun getNote(noteId: Long): Flow<Note>
 }
