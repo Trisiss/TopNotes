@@ -33,7 +33,7 @@ class DetailNoteViewModel(
             loadNoteUseCase.getNote(noteId)
                 .collect {
                     _note.value = it
-                    tempNote = it.copy()
+                    tempNote = it?.copy()
                 }
         }
     }

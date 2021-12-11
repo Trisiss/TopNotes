@@ -19,7 +19,7 @@ internal class NoteLocalDataSource(daoProvider: DaoProvider): NoteDataSource {
      noteDao.getNotes()
 
     @InternalCoroutinesApi
-    override fun getNote(noteId: Long): Flow<NoteEntity> {
+    override fun getNote(noteId: Long): Flow<NoteEntity?> {
         return noteDao.getNote(noteId)
     }
 

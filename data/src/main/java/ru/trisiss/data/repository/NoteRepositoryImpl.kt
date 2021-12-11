@@ -15,8 +15,8 @@ class NoteRepositoryImpl(private val noteDataSource: NoteDataSource, private val
     override suspend fun getNotes(): Flow<List<Note>> =
         noteDataSource.getNotes().map { entityList -> entityList.map { noteMapper.fromEntity(it) } }
 
-    override suspend fun getNote(noteId: Long): Flow<Note> =
-        noteDataSource.getNote(noteId = noteId).map { entity -> noteMapper.fromEntity(entity) }
+    override suspend fun getNote(noteId: Long): Flow<Note?> =
+        noteDataSource.getNote(noteId = noteId).map { entity -> entity?.let { noteMapper.fromEntity(entity) }}
 
     override suspend fun saveNote(note: Note, deleted: Boolean) {
         noteDataSource.insertNote(noteMapper.toEntity(note, deleted))

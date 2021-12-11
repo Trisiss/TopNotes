@@ -8,7 +8,7 @@ import ru.trisiss.data.local.model.NoteEntity
  */
 interface NoteDataSource {
     fun getNotes(): Flow<List<NoteEntity>>
-    fun getNote(noteId: Long): Flow<NoteEntity>
+    fun getNote(noteId: Long): Flow<NoteEntity?>
     suspend fun insertNote(noteEntity: NoteEntity)
     suspend fun insertNotes(noteEntities: List<NoteEntity>)
 }
