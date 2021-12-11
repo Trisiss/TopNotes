@@ -7,4 +7,5 @@ import ru.trisiss.domain.model.Note
  */
 interface LoadNote {
     suspend fun getNote(noteId: Long): Note?
+    suspend fun getNotes(): List<Note>?
 }
