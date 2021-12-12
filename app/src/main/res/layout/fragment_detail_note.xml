@@ -61,14 +61,13 @@
                     android:layout_margin="10dp"
                     android:autofillHints="Title note"
                     android:gravity="start|top"
-                    android:hint="Note title"
+                    android:hint="@string/note_title_detail"
                     android:inputType="textMultiLine"
                     android:minHeight="48dp"
                     android:padding="10dp"
                     android:text="@={vm.note.title}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/note_modification_detail" />
-
 
                 <EditText
                     android:id="@+id/note_text_detail"
@@ -78,14 +77,13 @@
                     android:layout_margin="10dp"
                     android:autofillHints="Text note"
                     android:gravity="start|top"
-                    android:hint="Note text"
+                    android:hint="@string/note_text_detail"
                     android:padding="10dp"
                     android:text="@={vm.note.text}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/note_title_detail" />
-
 
                 <TextView
                     android:id="@+id/note_modification_detail"
