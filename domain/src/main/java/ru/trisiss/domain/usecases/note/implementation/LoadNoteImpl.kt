@@ -8,6 +8,8 @@ import ru.trisiss.domain.usecases.note.LoadNote
  */
 class LoadNoteImpl(private val repository: NoteRepository): LoadNote {
     override suspend fun getNote(noteId: Long) =
-
        repository.getNote(noteId = noteId)
+
+    override suspend fun getNotes() =
+        repository.getNotes()
 }

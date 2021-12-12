@@ -8,8 +8,8 @@ object AndroidSDK {
     const val buildToolVersion = "30.0.2"
 }
 object Releases {
-    const val versionCode = 4
-    const val versionName = "0.1.3"
+    const val versionCode = 5
+    const val versionName = "0.1.4"
 }
 
 object Versions {
@@ -27,6 +27,7 @@ object Versions {
     const val androidxCore = "1.7.0"
     const val legacySupport = "1.0.0"
     const val livedataKtx = "2.4.0"
+    const val lifeCycleKtx = "2.4.0"
     const val recycler = "1.2.1"
     const val constraint = "2.1.1"
     const val recyclerSelection = "1.1.0"
@@ -60,6 +61,7 @@ object AndroidDeps {
     val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     val core = "androidx.core:core-ktx:${Versions.androidxCore}"
     val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
+    val lifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycleKtx}"
 }
 
 object ViewModelDeps {

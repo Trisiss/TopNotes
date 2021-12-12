@@ -1,14 +1,14 @@
 package ru.trisiss.topnotes.ui.detailNote
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.trisiss.domain.model.Note
-import ru.trisiss.domain.usecases.note.AddNote
 import ru.trisiss.domain.usecases.note.LoadNote
+import ru.trisiss.domain.usecases.note.SaveNote
 import java.util.*
 
 /**
@@ -17,24 +17,25 @@ import java.util.*
 class DetailNoteViewModel(
     val noteId: Long,
     private val loadNoteUseCase: LoadNote,
-    private val addNoteUseCase: AddNote
+    private val saveNoteUseCase: SaveNote
 ) : ViewModel() {
-    private var _note = MutableLiveData<Note?>(null)
     private var tempNote: Note? = null
-    val note: LiveData<Note?>
+    private var _note = MutableStateFlow<Note?>(null)
+    val note: StateFlow<Note?>
         get() = _note
 
     init {
-        viewModelScope.launch {
-            _note.postValue(getNote(noteId))
-        }
+        getNote(noteId = noteId)
     }
 
-    private suspend fun getNote(noteId: Long): Note? {
-        val asyncNote = viewModelScope.async { loadNoteUseCase.getNote(noteId) }
-        val note = asyncNote.await()
-        tempNote = note?.copy()
-        return note
+    private fun getNote(noteId: Long) {
+        viewModelScope.launch {
+            loadNoteUseCase.getNote(noteId)
+                .collect {
+                    _note.value = it
+                    tempNote = it?.copy()
+                }
+        }
     }
 
     fun saveNote(newNote: Note?) {
@@ -49,6 +50,6 @@ class DetailNoteViewModel(
 
     private suspend fun saveNoteAsync() {
         _note.value?.dateModification = Calendar.getInstance()
-        _note.value?.let { addNoteUseCase.addNote(it) }
+        _note.value?.let { saveNoteUseCase.saveNote(it) }
     }
 }

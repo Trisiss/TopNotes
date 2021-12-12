@@ -1,7 +1,7 @@
 package ru.trisiss.data.local.datasource
 
 import kotlinx.coroutines.InternalCoroutinesApi
-import ru.trisiss.data.local.mapper.NoteMapper
+import kotlinx.coroutines.flow.Flow
 import ru.trisiss.data.local.model.NoteEntity
 import ru.trisiss.data.local.provider.DaoProvider
 import ru.trisiss.data.repository.datasource.NoteDataSource
@@ -9,17 +9,17 @@ import ru.trisiss.data.repository.datasource.NoteDataSource
 /**
  * Created by trisiss on 5/4/2021.
  */
-internal class NoteLocalDataSource(daoProvider: DaoProvider, private val noteMapper: NoteMapper): NoteDataSource {
+internal class NoteLocalDataSource(daoProvider: DaoProvider): NoteDataSource {
 
     @InternalCoroutinesApi
     val noteDao = daoProvider.getNoteDao()
 
     @InternalCoroutinesApi
-    override suspend fun getNotes(): List<NoteEntity>? =
+    override fun getNotes(): Flow<List<NoteEntity>> =
      noteDao.getNotes()
 
     @InternalCoroutinesApi
-    override suspend fun getNote(noteId: Long): NoteEntity? {
+    override fun getNote(noteId: Long): Flow<NoteEntity?> {
         return noteDao.getNote(noteId)
     }
 
@@ -29,7 +29,7 @@ internal class NoteLocalDataSource(daoProvider: DaoProvider, private val noteMap
     }
 
     @InternalCoroutinesApi
-    override suspend fun insertNoteMulti(notesEntity: List<NoteEntity>) {
-        noteDao.insertOrUpdateMulti(notesEntity)
+    override suspend fun insertNotes(noteEntities: List<NoteEntity>) {
+        noteDao.insertOrUpdateMulti(noteEntities)
     }
 }
