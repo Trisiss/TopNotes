@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ru.trisiss.domain.model.Note"/>
-        <import type="ru.trisiss.topnotes.util.DateUtil"/>
+
+        <import type="ru.trisiss.domain.model.Note" />
+
+        <import type="ru.trisiss.topnotes.util.DateUtil" />
+
         <variable
             name="vm"
             type="ru.trisiss.topnotes.ui.detailNote.DetailNoteViewModel" />
@@ -22,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintBottom_toTopOf="@+id/scroll_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -34,57 +37,65 @@
                 app:navigationIcon="@drawable/ic_arrow_back" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
-            tools:context=".ui.detailNote.DetailNoteFragment">
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout2">
 
-            <EditText
-                android:id="@+id/note_title_detail"
-                style="?attr/backgroundEdit"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:autofillHints="Title note"
-                android:gravity="start|top"
-                android:hint="Note title"
-                android:inputType="textMultiLine"
-                android:text="@={vm.note.title}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/note_modification_detail" />
+                android:layout_marginBottom="1dp"
+                tools:context=".ui.detailNote.DetailNoteFragment">
 
-            <EditText
-                android:id="@+id/note_text_detail"
-                style="?attr/backgroundEdit"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="5dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:gravity="start|top"
-                android:hint="Note text"
-                android:text="@={vm.note.text}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/note_title_detail" />
+                <EditText
+                    android:id="@+id/note_title_detail"
+                    style="?attr/backgroundEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:autofillHints="Title note"
+                    android:gravity="start|top"
+                    android:hint="@string/note_title_detail"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:text="@={vm.note.title}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/note_modification_detail" />
 
-            <TextView
-                android:id="@+id/note_modification_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@{DateUtil.INSTANCE.calendarToString(vm.note.dateModification)}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:id="@+id/note_text_detail"
+                    style="?attr/backgroundEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:autofillHints="Text note"
+                    android:gravity="start|top"
+                    android:hint="@string/note_text_detail"
+                    android:padding="10dp"
+                    android:text="@={vm.note.text}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/note_title_detail" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/note_modification_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@{DateUtil.INSTANCE.calendarToString(vm.note.dateModification)}"
+                    app:layout_constraintStart_toStartOf="@id/note_title_detail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2021-12-12 08:00:00" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

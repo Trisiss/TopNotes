@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="note_list_light_background">#CC54E1F3</color>
-    <color name="note_list_dark_background">#817979</color>
+    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimaryDark">#003c8f</color>
+    <color name="colorAccent">#1565c0</color>
+    <color name="colorNoteListBackgroundLight">#CC54E1F3</color>
+    <color name="colorNoteListBackgroundNight">#817979</color>
+    <color name="colorPrimaryNight">#4f5b62</color>
+    <color name="colorPrimaryDarkNight">#000a12</color>
+    <color name="colorAccentNight">#4f5b62</color>
 </resources>
