@@ -18,57 +18,57 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvListNotes"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            tools:listitem="@layout/view_note" />
+            android:fitsSystemWindows="true">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="17dp"
-            android:contentDescription="@string/add_note_drawer"
-            android:onClick="@{() -> callback.add()}"
-            android:src="@drawable/ic_baseline_add_24"
-            app:layout_anchor="@id/rvListNotes"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay"
-            tools:ignore="MissingConstraints">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_notes_list"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListNotes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:menu="@menu/menu_notes_list"
-                app:title="All notes"
-                app:navigationIcon="@drawable/ic_arrow_back"/>
-        </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                tools:listitem="@layout/view_note" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAddNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="17dp"
+                android:contentDescription="@string/add_note_drawer"
+                android:onClick="@{() -> callback.add()}"
+                android:src="@drawable/ic_baseline_add_24"
+                app:layout_anchor="@id/rvListNotes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay"
+                tools:ignore="MissingConstraints">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_notes_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/menu_notes_list"
+                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:title="All notes" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
