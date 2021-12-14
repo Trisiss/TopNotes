@@ -15,10 +15,16 @@
             type="ru.trisiss.topnotes.ui.listNotes.ListNotesFragment.Callback" />
     </data>
 
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListNotes"
@@ -58,7 +64,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:menu="@menu/menu_notes_list"
-                app:title="All notes" />
+                app:title="All notes"
+                app:navigationIcon="@drawable/ic_arrow_back"/>
         </com.google.android.material.appbar.AppBarLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/drawer_actions" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+
 </layout>

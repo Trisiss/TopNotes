@@ -31,6 +31,7 @@ object Versions {
     const val recycler = "1.2.1"
     const val constraint = "2.1.1"
     const val recyclerSelection = "1.1.0"
+    const val material = "1.4.0"
 }
 
 object Dependencies {
@@ -95,6 +96,7 @@ object UI {
     val recycler = "androidx.recyclerview:recyclerview:${Versions.recycler}"
     val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
     val recyclerSelection = "androidx.recyclerview:recyclerview-selection:${Versions.recyclerSelection}"
+    val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object Test {
