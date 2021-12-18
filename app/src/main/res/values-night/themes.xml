@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.MinimalThemeApp" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryNight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
         <item name="colorAccent">@color/colorAccentNight</item>
@@ -9,8 +9,4 @@
         <item name="actionModeBackground">@color/colorPrimaryNight</item>
         <item name="actionModeSplitBackground">@color/colorPrimaryNight</item>
     </style>
-
-    <style name="Theme.MinimalThemeApp" parent="Base.Theme.MinimalThemeApp" />
-
-    <style name="Theme.MinimalThemeApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
 </resources>
