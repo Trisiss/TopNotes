@@ -113,6 +113,8 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
             }
         }
 
+        setupNavigationDrawer()
+
         return binding.root
     }
 
@@ -149,5 +151,17 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onDestroyActionMode(mode: ActionMode?) {
         tracker.clearSelection()
         actionMode = null
+    }
+
+    private fun setupNavigationDrawer() {
+        binding.navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.first_item -> findNavController().navigate(
+                    ListNotesFragmentDirections.actionListNotesFragmentToAboutFragment()
+                )
+            }
+        binding.drawerLayout.closeDrawer(GravityCompat.START, false)
+            true
+        }
     }
 }

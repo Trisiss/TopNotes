@@ -32,6 +32,9 @@ object Versions {
     const val constraint = "2.1.1"
     const val recyclerSelection = "1.1.0"
     const val material = "1.4.0"
+    const val composeShare = "1.0.5"
+    const val composeViewmodel = "1.0.0-alpha07"
+    const val composeActivity = "1.3.1"
 }
 
 object Dependencies {
@@ -43,6 +46,7 @@ object Dependencies {
     val room = Room
     val koin = Koin
     val ui = UI
+    val compose = Compose
     val test = Test
 }
 
@@ -97,6 +101,26 @@ object UI {
     val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
     val recyclerSelection = "androidx.recyclerview:recyclerview-selection:${Versions.recyclerSelection}"
     val material = "com.google.android.material:material:${Versions.material}"
+}
+
+object Compose {
+    // Integration with activities
+    val activity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    // Compose Material Design
+    val material = "androidx.compose.material:material:${Versions.composeShare}"
+    // Animations
+    val animation = "androidx.compose.animation:animation:${Versions.composeShare}"
+    // Tooling support (Previews, etc.)
+    val tooling = "androidx.compose.ui:ui-tooling:${Versions.composeShare}"
+    // Integration with ViewModels
+    val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewmodel}"
+    // When using a MDC theme
+    val materialTheme = "com.google.android.material:compose-theme-adapter:${Versions.composeShare}"
+    // When using a AppCompat theme
+    val appCompatTheme = "com.google.accompanist:accompanist-appcompat-theme:0.16.0"
+    // UI Tests
+    val test = "androidx.compose.ui:ui-test-junit4:${Versions.composeShare}"
+
 }
 
 object Test {

@@ -4,8 +4,6 @@
 
     <item
         android:id="@+id/first_item"
-        android:title="First" />
-    <item
-        android:id="@+id/second_item"
-        android:title="Second" />
+        android:icon="@drawable/ic_info"
+        android:title="About" />
 </menu>

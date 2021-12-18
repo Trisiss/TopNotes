@@ -18,7 +18,8 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frameLayout"
@@ -64,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:menu="@menu/menu_notes_list"
-                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:navigationIcon="@drawable/ic_menu"
                     app:title="All notes" />
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -76,7 +77,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:menu="@menu/drawer_actions" />
+            app:menu="@menu/drawer_actions"
+            app:headerLayout="@layout/drawer_header" />
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
