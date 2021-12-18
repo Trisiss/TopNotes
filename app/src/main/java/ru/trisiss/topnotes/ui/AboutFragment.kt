@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.accompanist.appcompattheme.AppCompatTheme
+import com.google.android.material.composethemeadapter.MdcTheme
 import ru.trisiss.topnotes.R
 
 /**
@@ -32,8 +32,8 @@ class AboutFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_about, container, false)
         val testView: ComposeView = view.findViewById(R.id.test)
-        testView.setContent { 
-            AppCompatTheme {
+        testView.setContent {
+            MdcTheme {
                 Greeting()
             }
         }
