@@ -4,19 +4,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/fragment_about_appbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_about"
         style="@style/Toolbar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="About"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_about"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:navigationIcon="@drawable/ic_arrow_back" />
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.compose.ui.platform.ComposeView
         android:id="@+id/test"
@@ -24,6 +20,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_about_appbar"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar_about"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

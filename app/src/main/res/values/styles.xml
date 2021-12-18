@@ -6,8 +6,9 @@
 
     <style name="Toolbar" >
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.DayNight.ActionBar</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 
 </resources>
