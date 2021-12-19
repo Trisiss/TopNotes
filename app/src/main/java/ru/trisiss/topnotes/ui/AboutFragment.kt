@@ -51,16 +51,11 @@ private fun Content() {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         AppName()
-        Column {
-            Text(
-                text = "Author: Trisiss (Pavel Smirnykh)",
-                style = MaterialTheme.typography.subtitle2,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-                    .padding(vertical = 5.dp)
-            )
-            VersionText()
+        Column(
+            Modifier
+                .padding(vertical = 5.dp)
+        ) {
+            VersionText(withAuthor = true)
         }
     }
 }
@@ -78,9 +73,19 @@ private fun AppName() {
 }
 
 @Composable
-private fun VersionText() {
+private fun VersionText(withAuthor: Boolean = false) {
+    if (withAuthor) {
+        Text(
+            text = stringResource(id = R.string.app_author),
+            style = MaterialTheme.typography.subtitle2,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .padding(vertical = 5.dp)
+        )
+    }
     Text(
-        text = "Version: ${BuildConfig.VERSION_NAME}",
+        text = stringResource(id = R.string.app_version, BuildConfig.VERSION_NAME),
         style = MaterialTheme.typography.subtitle2,
         modifier = Modifier
             .fillMaxWidth()
