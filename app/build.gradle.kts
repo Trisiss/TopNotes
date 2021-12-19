@@ -99,7 +99,6 @@ dependencies {
     implementation(Dependencies.compose.tooling)
     implementation(Dependencies.compose.viewmodel)
     implementation(Dependencies.compose.materialTheme)
-    implementation(Dependencies.compose.appCompatTheme)
     testImplementation(Dependencies.compose.test)
 
     // Test
