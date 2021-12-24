@@ -8,8 +8,8 @@ object AndroidSDK {
     const val buildToolVersion = "30.0.2"
 }
 object Releases {
-    const val versionCode = 6
-    const val versionName = "0.2.0"
+    const val versionCode = 8
+    const val versionName = "0.3.0"
 }
 
 object Versions {
