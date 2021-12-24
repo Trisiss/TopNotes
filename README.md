@@ -13,9 +13,9 @@ The application was conceived as a project for teaching Android development. Lat
 [Recyclerview-selection](https://developer.android.com/reference/androidx/recyclerview/selection/package-summary)  
 
 ## Architecture
-MVVM
-Clean architecture
-Modularization
+MVVM  
+Clean architecture  
+Modularization  
 
 ## Privacy Policy
 The app doesn't collect or store personal data.
