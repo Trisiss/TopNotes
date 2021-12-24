@@ -4,13 +4,13 @@
 The application was conceived as a project for teaching Android development. Later, the goal was to make easy, quick, but functional notes for everyday use. Therefore, it was decided to develop this project further, after studying the basics of development. I invite everyone to join in improving the project.
 
 ## Using libraries
-[DataBinding](https://developer.android.com/topic/libraries/data-binding)
-[AAC](https://developer.android.com/topic/architecture)
-[Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
-[Koin](https://insert-koin.io/)
-[Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-[Room](https://developer.android.com/training/data-storage/room)
-[Recyclerview-selection](https://developer.android.com/reference/androidx/recyclerview/selection/package-summary)
+[DataBinding](https://developer.android.com/topic/libraries/data-binding)  
+[AAC](https://developer.android.com/topic/architecture)  
+[Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)  
+[Koin](https://insert-koin.io/)  
+[Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)  
+[Room](https://developer.android.com/training/data-storage/room)  
+[Recyclerview-selection](https://developer.android.com/reference/androidx/recyclerview/selection/package-summary)  
 
 ## Architecture
 MVVM
