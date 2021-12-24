@@ -27,6 +27,7 @@ android {
         }
     }
     android.buildFeatures.dataBinding = true
+    android.buildFeatures.compose = true
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -44,6 +45,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.5"
     }
 }
 
@@ -86,6 +90,16 @@ dependencies {
     implementation(Dependencies.ui.recycler)
     implementation(Dependencies.ui.constraint)
     implementation(Dependencies.ui.recyclerSelection)
+    implementation(Dependencies.ui.material)
+
+    // Compose
+    implementation(Dependencies.compose.activity)
+    implementation(Dependencies.compose.animation)
+    implementation(Dependencies.compose.material)
+    implementation(Dependencies.compose.tooling)
+    implementation(Dependencies.compose.viewmodel)
+    implementation(Dependencies.compose.materialTheme)
+    testImplementation(Dependencies.compose.test)
 
     // Test
     testImplementation(Dependencies.test.junit)

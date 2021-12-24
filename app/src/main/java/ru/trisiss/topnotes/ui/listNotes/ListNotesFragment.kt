@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.view.ActionMode
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -32,6 +33,7 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     lateinit var tracker: SelectionTracker<Long>
     private var actionMode: ActionMode? = null
     lateinit var adapter: ListNotesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -63,6 +65,10 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
             SelectionPredicates.createSelectAnything()
         ).build()
         adapter.tracker = tracker
+
+        binding.toolbarNotesList.setNavigationOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
 
         lifecycleScope.launch {
             // repeatOnLifecycle launches the block in a new coroutine every time the
@@ -107,6 +113,8 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
             }
         }
 
+        setupNavigationDrawer()
+
         return binding.root
     }
 
@@ -143,5 +151,17 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onDestroyActionMode(mode: ActionMode?) {
         tracker.clearSelection()
         actionMode = null
+    }
+
+    private fun setupNavigationDrawer() {
+        binding.navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.first_item -> findNavController().navigate(
+                    ListNotesFragmentDirections.actionListNotesFragmentToAboutFragment()
+                )
+            }
+        binding.drawerLayout.closeDrawer(GravityCompat.START, false)
+            true
+        }
     }
 }

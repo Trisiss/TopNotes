@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_listNotesFragment_to_detailNoteFragment"
             app:destination="@+id/detailNoteFragment" />
+        <action
+            android:id="@+id/action_listNotesFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNoteFragment"
@@ -22,4 +25,8 @@
             android:name="noteId"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ru.trisiss.topnotes.ui.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

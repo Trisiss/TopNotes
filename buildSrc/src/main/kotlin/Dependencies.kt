@@ -8,29 +8,34 @@ object AndroidSDK {
     const val buildToolVersion = "30.0.2"
 }
 object Releases {
-    const val versionCode = 6
-    const val versionName = "0.2.0"
+    const val versionCode = 8
+    const val versionName = "0.3.0"
 }
 
 object Versions {
+    const val gradleAndroidPlugin = "7.0.4"
     const val kotlin = "1.5.31"
     const val kotlinLib = "1.5.31"
     const val viewModel = "2.4.0"
     const val nav = "2.3.5"
-    const val room = "2.3.0"
+    const val room = "2.4.0"
     const val coroutines = "1.5.2"
     const val androidJunit = "1.1.3"
     const val junit = "4.13.2"
     const val espresso = "3.4.0"
     const val koin = "3.1.3"
-    const val appCompat = "1.3.1"
+    const val appCompat = "1.4.0"
     const val androidxCore = "1.7.0"
     const val legacySupport = "1.0.0"
     const val livedataKtx = "2.4.0"
     const val lifeCycleKtx = "2.4.0"
     const val recycler = "1.2.1"
-    const val constraint = "2.1.1"
+    const val constraint = "2.1.2"
     const val recyclerSelection = "1.1.0"
+    const val material = "1.4.0"
+    const val composeShare = "1.0.5"
+    const val composeViewmodel = "2.4.0"
+    const val composeActivity = "1.4.0"
 }
 
 object Dependencies {
@@ -42,6 +47,7 @@ object Dependencies {
     val room = Room
     val koin = Koin
     val ui = UI
+    val compose = Compose
     val test = Test
 }
 
@@ -95,6 +101,24 @@ object UI {
     val recycler = "androidx.recyclerview:recyclerview:${Versions.recycler}"
     val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
     val recyclerSelection = "androidx.recyclerview:recyclerview-selection:${Versions.recyclerSelection}"
+    val material = "com.google.android.material:material:${Versions.material}"
+}
+
+object Compose {
+    // Integration with activities
+    val activity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    // Compose Material Design
+    val material = "androidx.compose.material:material:${Versions.composeShare}"
+    // Animations
+    val animation = "androidx.compose.animation:animation:${Versions.composeShare}"
+    // Tooling support (Previews, etc.)
+    val tooling = "androidx.compose.ui:ui-tooling:${Versions.composeShare}"
+    // Integration with ViewModels
+    val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewmodel}"
+    // When using a MDC theme
+    val materialTheme = "com.google.android.material:compose-theme-adapter:${Versions.composeShare}"
+    // UI Tests
+    val test = "androidx.compose.ui:ui-test-junit4:${Versions.composeShare}"
 }
 
 object Test {

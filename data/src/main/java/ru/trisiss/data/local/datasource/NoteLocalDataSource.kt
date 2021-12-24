@@ -14,21 +14,21 @@ internal class NoteLocalDataSource(daoProvider: DaoProvider): NoteDataSource {
     @InternalCoroutinesApi
     val noteDao = daoProvider.getNoteDao()
 
-    @InternalCoroutinesApi
+    @OptIn(InternalCoroutinesApi::class)
     override fun getNotes(): Flow<List<NoteEntity>> =
      noteDao.getNotes()
 
-    @InternalCoroutinesApi
+    @OptIn(InternalCoroutinesApi::class)
     override fun getNote(noteId: Long): Flow<NoteEntity?> {
         return noteDao.getNote(noteId)
     }
 
-    @InternalCoroutinesApi
+    @OptIn(InternalCoroutinesApi::class)
     override suspend fun insertNote(noteEntity: NoteEntity) {
         noteDao.insertOrUpdate(noteEntity)
     }
 
-    @InternalCoroutinesApi
+    @OptIn(InternalCoroutinesApi::class)
     override suspend fun insertNotes(noteEntities: List<NoteEntity>) {
         noteDao.insertOrUpdateMulti(noteEntities)
     }

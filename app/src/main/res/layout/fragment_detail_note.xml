@@ -20,22 +20,15 @@
         tools:context=".ui.detailNote.DetailNoteFragment">
 
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.MinimalThemeApp.AppBarOverlay"
-            app:layout_constraintBottom_toTopOf="@+id/scroll_view"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_note_detail"
+            style="@style/Toolbar"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Note"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_note_detail"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:navigationIcon="@drawable/ic_arrow_back" />
-        </com.google.android.material.appbar.AppBarLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
             android:id="@+id/scroll_view"
@@ -44,7 +37,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout2">
+            app:layout_constraintTop_toBottomOf="@id/toolbar_note_detail">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -80,6 +73,7 @@
                     android:hint="@string/note_text_detail"
                     android:padding="10dp"
                     android:text="@={vm.note.text}"
+                    android:inputType="textMultiLine"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
