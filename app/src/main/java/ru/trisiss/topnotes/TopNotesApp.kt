@@ -4,6 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 import ru.trisiss.data.local.di.localModule
 import ru.trisiss.data.repository.di.repositoryModule
 import ru.trisiss.domain.di.domainModule
@@ -17,7 +18,7 @@ class TopNotesApp : Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
+            androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@TopNotesApp)
             modules(
         appModule +

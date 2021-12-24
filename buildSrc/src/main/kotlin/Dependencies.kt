@@ -14,8 +14,8 @@ object Releases {
 
 object Versions {
     const val gradleAndroidPlugin = "7.0.4"
-    const val kotlin = "1.6.10"
-    const val kotlinLib = "1.6.10"
+    const val kotlin = "1.5.31"
+    const val kotlinLib = "1.5.31"
     const val viewModel = "2.4.0"
     const val nav = "2.3.5"
     const val room = "2.4.0"
