@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Top Notes</string>
+    <string name="app_author">Author: Trisiss (Pavel Smirnykh)</string>
+    <string name="app_version">Version: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_note_drawer">Add note drawer</string>
+    <string name="note_text_detail">Note text</string>
+    <string name="note_title_detail">Note title</string>
 </resources>

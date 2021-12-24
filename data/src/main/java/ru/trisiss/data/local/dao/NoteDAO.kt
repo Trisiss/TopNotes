@@ -1,16 +1,17 @@
 package ru.trisiss.data.local.dao
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import ru.trisiss.data.local.model.NoteEntity
 
 @Dao
 interface NoteDAO {
 
     @Query("SELECT * FROM notes WHERE deleted = 0 ORDER BY timestamp DESC ")
-    suspend fun getNotes(): List<NoteEntity>
+    fun getNotes(): Flow<List<NoteEntity>>
 
     @Query("SELECT * FROM notes WHERE id = :noteId")
-    suspend fun getNote(noteId: Long): NoteEntity?
+    fun getNote(noteId: Long): Flow<NoteEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdate(noteEntity: NoteEntity)

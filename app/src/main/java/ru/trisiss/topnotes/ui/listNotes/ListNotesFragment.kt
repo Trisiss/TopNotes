@@ -4,13 +4,19 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.view.ActionMode
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.trisiss.topnotes.R
 import ru.trisiss.topnotes.databinding.FragmentNotesListBinding
@@ -27,6 +33,7 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     lateinit var tracker: SelectionTracker<Long>
     private var actionMode: ActionMode? = null
     lateinit var adapter: ListNotesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,11 +66,23 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
         ).build()
         adapter.tracker = tracker
 
-        viewModel.listNotes.observe(
-            viewLifecycleOwner,
-            { listNotes ->
-                adapter.submitList(listNotes)
-            })
+        binding.toolbarNotesList.setNavigationOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        lifecycleScope.launch {
+            // repeatOnLifecycle launches the block in a new coroutine every time the
+            // lifecycle is in the STARTED state (or above) and cancels it when it's STOPPED.
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // Trigger the flow and start listening for values.
+                // Note that this happens when lifecycle is STARTED and stops
+                // collecting when the lifecycle is STOPPED
+                viewModel.listNotes.collect {
+                    adapter.submitList(it)
+                }
+            }
+        }
+
 
         tracker?.addObserver(
             object : SelectionTracker.SelectionObserver<Long>() {
@@ -94,7 +113,14 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
             }
         }
 
+        setupNavigationDrawer()
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getData()
     }
 
     interface Callback {
@@ -125,5 +151,17 @@ class ListNotesFragment : Fragment(), ActionMode.Callback {
     override fun onDestroyActionMode(mode: ActionMode?) {
         tracker.clearSelection()
         actionMode = null
+    }
+
+    private fun setupNavigationDrawer() {
+        binding.navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.first_item -> findNavController().navigate(
+                    ListNotesFragmentDirections.actionListNotesFragmentToAboutFragment()
+                )
+            }
+        binding.drawerLayout.closeDrawer(GravityCompat.START, false)
+            true
+        }
     }
 }
